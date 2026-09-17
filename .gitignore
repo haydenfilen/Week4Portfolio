@@ -1,0 +1,5 @@
+secretpage.html
+*.log
+*.tmp
+build/
+dist/
