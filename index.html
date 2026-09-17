@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hayden Filen | Software Developer</title>
+    <meta
+      name="description"
+      content="Portfolio website for Hayden Filen, a software developer specializing in web applications, product design, and digital experiences."
+    />
+    <style>
+      :root {
+        --bg: #f5f3f0;
+        --panel: #ffffff;
+        --panel-alt: #f2efe9;
+        --muted: #6b7280;
+        --text: #1f2937;
+        --heading: #111827;
+        --line: rgba(17, 24, 39, 0.08);
+        --shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        --orange: #f97316;
+        --orange-strong: #ea580c;
+        --orange-soft: #fff1e8;
+        --stone: #e7e5e4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 88px 0;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--orange-strong);
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      h1, h2, h3, h4 {
+        margin: 0 0 16px;
+        color: var(--heading);
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 5vw, 5rem);
+        letter-spacing: -0.06em;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        letter-spacing: -0.05em;
+      }
+
+      p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 1.04rem;
+      }
+
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 14px 22px;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .btn-primary {
+        background: var(--orange);
+        color: #fff;
+        box-shadow: 0 14px 24px rgba(249, 115, 22, 0.25);
+      }
+
+      .btn-primary:hover {
+        background: var(--orange-strong);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--heading);
+      }
+
+      .btn-secondary:hover {
+        border-color: rgba(17, 24, 39, 0.18);
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(245, 243, 240, 0.8);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        color: var(--heading);
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--orange), #fb923c);
+        color: white;
+        font-size: 1rem;
+        box-shadow: 0 10px 18px rgba(249, 115, 22, 0.25);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-size: 0.96rem;
+        font-weight: 600;
+      }
+
+      nav a:hover {
+        color: var(--heading);
+      }
+
+      .hero {
+        padding: 56px 0 32px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 56px;
+        align-items: center;
+      }
+
+      .lead {
+        font-size: 1.12rem;
+        max-width: 620px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      .meta-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--heading);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .portrait-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .portrait-card img {
+        width: 100%;
+        height: 540px;
+        object-fit: cover;
+        border-radius: 18px;
+      }
+
+      .floating-badge {
+        position: absolute;
+        right: -18px;
+        bottom: 24px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .floating-badge strong {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--heading);
+      }
+
+      .floating-badge span {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 36px;
+      }
+
+      .stat {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px 20px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 2rem;
+        color: var(--heading);
+        letter-spacing: -0.06em;
+      }
+
+      .stat span {
+        color: var(--muted);
+      }
+
+      .about-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 28px;
+      }
+
+      .about-card,
+      .contact-card,
+      .timeline-card,
+      .project-card,
+      .skill-card,
+      .mini-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .about-card {
+        padding: 20px;
+      }
+
+      .about-card img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 18px;
+      }
+
+      .about-copy {
+        padding: 12px 0;
+      }
+
+      .about-copy p {
+        font-size: 1.04rem;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .mini-card {
+        padding: 20px;
+      }
+
+      .mini-card .icon {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: var(--orange-soft);
+        color: var(--orange-strong);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .skill-card {
+        padding: 22px;
+      }
+
+      .skill-card ul {
+        list-style: none;
+        margin: 16px 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .skill-card li {
+        color: var(--muted);
+        padding-left: 16px;
+        position: relative;
+      }
+
+      .skill-card li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--orange);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .project-card {
+        overflow: hidden;
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .project-body {
+        padding: 20px;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 12px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: var(--orange-soft);
+        color: var(--orange-strong);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .timeline-card {
+        padding: 26px 24px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 22px;
+        align-items: start;
+      }
+
+      .date {
+        font-weight: 700;
+        color: var(--orange-strong);
+        background: var(--orange-soft);
+        border-radius: 999px;
+        padding: 8px 10px;
+        text-align: center;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+      }
+
+      .timeline-item h3 {
+        margin-bottom: 6px;
+      }
+
+      .timeline-item p {
+        margin-bottom: 0;
+      }
+
+      .contact-card {
+        padding: 26px;
+      }
+
+      .contact-list {
+        list-style: none;
+        margin: 20px 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .contact-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--heading);
+        font-weight: 600;
+      }
+
+      .contact-list .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--orange);
+        box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
+      }
+
+      .site-footer {
+        padding: 26px 0 40px;
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      @media (max-width: 940px) {
+        .hero-grid,
+        .about-grid,
+        .contact-grid,
+        .projects-grid,
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+          order: -1;
+        }
+      }
+
+      @media (max-width: 680px) {
+        nav {
+          display: none;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+
+        .header-inner {
+          min-height: 64px;
+        }
+
+        .portfolio-title {
+          font-size: 2.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="Hayden Filen home">
+          <span class="brand-mark">HF</span>
+          <span>Hayden Filen</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Software Developer</span>
+            <h1 class="portfolio-title">Building clean, useful digital experiences.</h1>
+            <p class="lead">
+              I’m Hayden Filen, a full-stack developer focused on crafting thoughtful web apps,
+              seamless interfaces, and dependable product experiences for real people.
+            </p>
+
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#projects">View Projects</a>
+              <a class="btn btn-secondary" href="#contact">Let’s Talk</a>
+            </div>
+
+            <div class="meta-row" aria-label="Quick facts">
+              <span class="meta-pill">Available for freelance work</span>
+              <span class="meta-pill">Based in Chicago, IL</span>
+            </div>
+
+            <div class="stats" aria-label="Key stats">
+              <div class="stat">
+                <strong>6+</strong>
+                <span>Years in software</span>
+              </div>
+              <div class="stat">
+                <strong>24</strong>
+                <span>Launches shipped</span>
+              </div>
+              <div class="stat">
+                <strong>92%</strong>
+                <span>Client retention</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Profile portrait">
+            <div class="portrait-card">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                alt="Professional portrait of Hayden Filen"
+              />
+            </div>
+            <div class="floating-badge">
+              <strong>+7</strong>
+              <span>Years building web products</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">About</span>
+            <h2>Design-minded engineer with a product mindset.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+                alt="Team collaborating around a desk"
+              />
+            </div>
+
+            <div class="about-copy">
+              <p>
+                I help startups and growing teams turn complex ideas into accessible, high-performing
+                experiences. My work sits at the intersection of product strategy, front-end engineering,
+                and user experience. I enjoy creating systems that feel simple on the surface but are built
+                to scale in the background.
+              </p>
+              <p>
+                Previously, I’ve worked across SaaS products, internal tools, and consulting engagements,
+                partnering closely with designers, product managers, and stakeholders to ship features that
+                are measurable, maintainable, and genuinely useful.
+              </p>
+
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <div class="icon">01</div>
+                  <h3>Product Thinking</h3>
+                  <p>Turning user needs into product decisions that move the business forward.</p>
+                </div>
+                <div class="mini-card">
+                  <div class="icon">02</div>
+                  <h3>Technical Craft</h3>
+                  <p>Writing clear, maintainable code with performance and accessibility in mind.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Skills</span>
+            <h2>Tools and strengths I bring to a team.</h2>
+          </div>
+
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>Front-end</h3>
+              <ul>
+                <li>JavaScript / TypeScript</li>
+                <li>React / Next.js</li>
+                <li>HTML / CSS / Sass</li>
+                <li>Accessibility and design systems</li>
+              </ul>
+            </article>
+
+            <article class="skill-card">
+              <h3>Back-end</h3>
+              <ul>
+                <li>Node.js / Express</li>
+                <li>REST APIs and GraphQL</li>
+                <li>PostgreSQL / MongoDB</li>
+                <li>Authentication and deployment</li>
+              </ul>
+            </article>
+
+            <article class="skill-card">
+              <h3>Workflow</h3>
+              <ul>
+                <li>Agile collaboration</li>
+                <li>Git / GitHub workflows</li>
+                <li>Testing and QA</li>
+                <li>Performance optimization</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Projects</span>
+            <h2>Selected work and product examples.</h2>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                alt="Analytics dashboard interface"
+              />
+              <div class="project-body">
+                <h3>MetricFlow</h3>
+                <p>
+                  A dashboard for marketing teams to monitor campaigns, surface insights, and act on trends faster.
+                </p>
+                <div class="tag-row">
+                  <span class="tag">React</span>
+                  <span class="tag">Node</span>
+                  <span class="tag">Analytics</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img
+                src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?auto=format&fit=crop&w=1200&q=80"
+                alt="Mobile app design mockup"
+              />
+              <div class="project-body">
+                <h3>Northstar Mobile</h3>
+                <p>
+                  A field operations app designed to reduce friction for teams working across multiple locations.
+                </p>
+                <div class="tag-row">
+                  <span class="tag">React Native</span>
+                  <span class="tag">UX</span>
+                  <span class="tag">API</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                alt="Developer workspace with code on screen"
+              />
+              <div class="project-body">
+                <h3>Launchpad CMS</h3>
+                <p>
+                  A content platform enabling small teams to publish and manage digital experiences without heavy tooling.
+                </p>
+                <div class="tag-row">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">CMS</span>
+                  <span class="tag">Design</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Experience</span>
+            <h2>Where I’ve built and shipped.</h2>
+          </div>
+
+          <div class="timeline" aria-label="Professional experience timeline">
+            <article class="timeline-card">
+              <div class="timeline-item">
+                <div class="date">2022 — Present</div>
+                <div>
+                  <h3>Senior Front-end Developer · Luma Labs</h3>
+                  <p>
+                    Leading product UI development, mentoring engineers, and shaping design-system decisions for client-facing features.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="timeline-card">
+              <div class="timeline-item">
+                <div class="date">2019 — 2022</div>
+                <div>
+                  <h3>Full Stack Developer · North Peak Studio</h3>
+                  <p>
+                    Built and maintained SaaS applications, internal tooling, and API-driven product experiences using modern JavaScript stacks.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="timeline-card">
+              <div class="timeline-item">
+                <div class="date">2017 — 2019</div>
+                <div>
+                  <h3>Web Developer · Brightpoint Agency</h3>
+                  <p>
+                    Delivered websites and marketing experiences for brands and small businesses, balancing design quality with technical reliability.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container contact-grid">
+          <div class="contact-card">
+            <span class="eyebrow">Contact</span>
+            <h2>Let’s build something useful.</h2>
+            <p>
+              I’m open to product work, consulting opportunities, and collaborations with teams that value thoughtful execution.
+            </p>
+
+            <ul class="contact-list">
+              <li><span class="dot"></span> hello@alexmorgan.dev</li>
+              <li><span class="dot"></span> +1 (312) 555-0148</li>
+              <li><span class="dot"></span> Chicago, Illinois</li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <span class="eyebrow">Availability</span>
+            <h3>Open for new projects</h3>
+            <p>
+              Whether you need a product refresh, a marketing site, or a custom web app, I can help from discovery through launch.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="mailto:hello@alexmorgan.dev">Email Me</a>
+              <a class="btn btn-secondary" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="brand">
+          <span class="brand-mark">AM</span>
+          <span>Alex Morgan</span>
+        </div>
+        <span>© <span id="year"></span> Alex Morgan. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
